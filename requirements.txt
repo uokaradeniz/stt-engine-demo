@@ -2,3 +2,4 @@ uvicorn
 fastapi
 openai-whisper
 ollama
+python-multipart

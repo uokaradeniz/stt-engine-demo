@@ -16,7 +16,7 @@ import ollama
 
 
 def transcribe_audio(transcription_file):
-    transcribed = whisper.load_model("small", device="cpu").transcribe(transcription_file, language="tr", fp16=False)
+    transcribed = whisper.load_model("small").transcribe(transcription_file, language="tr", fp16=False)
     return transcribed
     # return optimize_transcription_result(transcribed)
 
