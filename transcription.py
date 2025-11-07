@@ -1,8 +1,12 @@
+import logging
 import os
 
 import whisper
 import ollama
 # from triton.knobs import language
+
+log = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 
 # def optimize_transcription_result(text):
@@ -16,7 +20,9 @@ import ollama
 
 
 def transcribe_audio(transcription_file):
-    transcribed = whisper.load_model("large-v3-turbo").transcribe(transcription_file, language="tr", fp16=False)
+    log.info("Transcribing audio...")
+    transcribed = whisper.load_model("large-v3-turbo", device="cpu").transcribe(transcription_file, language="tr", fp16=False)
+    log.info(f"Transcription completed\nResult:\n{transcribed}")
     return transcribed
     # return optimize_transcription_result(transcribed)
 
